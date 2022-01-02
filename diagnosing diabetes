@@ -1,0 +1,19 @@
+import codecademylib3
+import pandas as pd
+import numpy as np
+
+diabetes_data = pd.read_csv('diabetes.csv')
+print(diabetes_data.head())
+print(len(diabetes_data.shape))
+print(diabetes_data.isnull().sum())
+print(diabetes_data.describe())
+
+diabetes_data[['Glucose','BloodPressure','SkinThickness','Insulin','BMI']] = diabetes_data[['Glucose','BloodPressure','SkinThickness','Insulin','BMI']].replace(0,np.NaN)
+
+print(diabetes_data.isnull().sum())
+print(diabetes_data.isnull().sum())
+print(diabetes_data[diabetes_data.isnull().any(axis=1)])
+# every row w/ at least one missing value also has a missing value in insulin column
+print(diabetes_data.dtypes)
+print(diabetes_data.Outcome.unique())
+# can replace 'O' w/ 0 and convert outcome column to type int64
